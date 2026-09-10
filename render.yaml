@@ -1,0 +1,49 @@
+# ==============================================================================
+# Render Blueprint Specification for MedSpeak Backend
+# Official Docs: https://render.com/docs/blueprint-spec
+# ==============================================================================
+
+services:
+  - type: web
+    name: medspeak-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: HOST
+        value: 0.0.0.0
+      - key: CORS_ORIGINS
+        sync: false # Set in Render dashboard to your Vercel URL (e.g. https://medspeak.vercel.app,http://localhost:3000)
+      - key: RIME_API_KEY
+        sync: false # Set in Render dashboard (Server-side secret)
+      - key: RIME_API_URL
+        value: https://users.rime.ai/v1/rime-tts
+      - key: RIME_MODEL_ID
+        value: coda
+      - key: RIME_SPEAKER
+        value: astra
+      - key: RIME_LANGUAGE
+        value: en
+      - key: RIME_AUDIO_FORMAT
+        value: mp3
+      - key: RIME_SAMPLING_RATE
+        value: "24000"
+      - key: GEMINI_API_KEY
+        sync: false # Set in Render dashboard (Server-side secret)
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: FALLBACK_TTS_ENABLED
+        value: "false"
+      - key: STT_PROVIDER
+        value: faster_whisper
+      - key: STT_MODEL_SIZE
+        value: tiny.en

@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.venv/
+venv/
+env/
+ENV/
+
+# Production Builds
+.next/
+out/
+build/
+dist/
+*.egg-info/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing & Cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment Variables & Secrets (CRITICAL: Never commit secrets)
+.env
+.env.*
+.env*.local
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+frontend/.env*.local
+!.env.example
+!frontend/.env.example
+*.pem
+*.key
+*.token
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Audio / Temp Files
+*.wav
+*.mp3
+*.opus
+temp/
+scratch/
